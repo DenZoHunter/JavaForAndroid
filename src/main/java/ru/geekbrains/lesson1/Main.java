@@ -30,7 +30,7 @@ public class Main {
         helloString("Денис");
 //        проверка метода checkYear
         checkYear(2020);
-        checkYear(200);
+        checkYear(300);
 
     }
 
