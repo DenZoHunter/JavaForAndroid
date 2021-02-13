@@ -12,18 +12,17 @@ public class Lesson3 {
 
         System.out.println("Приветству вас! Добро пожалость в игру - Угадай число!");
         System.out.println("Ваша задача угадать число от 0 до 9, на игру даётся 3 попытки: ");
-        theGameGuessNumber(3);
 
-
-    }
-
-    public static void theGameGuessNumber(int userTryCount) {
         Random random = new Random();
-        int randomNumber = random.nextInt(10);
-        int userTry = 1;
+        Scanner scanner = new Scanner(System.in);
 
-        while (userTry <= userTryCount) {
-            Scanner scanner = new Scanner(System.in);
+        int randomNumber = random.nextInt(10);
+        int userTryCount = 3;
+        int userTry = 1;
+        boolean inGame = true;
+        boolean userWon = false;
+
+        while (inGame) {
             System.out.println("Введите число: ");
             int userAnswer = scanner.nextInt();
 
@@ -31,31 +30,33 @@ public class Lesson3 {
                 System.out.println("Ваше число больше загаданного!");
             } else if (userAnswer < randomNumber) {
                 System.out.println("Ваше число меньше загаданного!");
-            }
-            if (userAnswer == randomNumber) {
+            } else if (userAnswer == randomNumber) {
                 System.out.println("Поздравляю, вы угадали!");
-                System.out.println("Повторить игру еще раз? 1 – да / 0 – нет: ");
-                Scanner scannerAnswer = new Scanner(System.in);
-                int userWish = scannerAnswer.nextInt();
-                if (userWish == 1) {
-                    theGameGuessNumber(3);
-                } else if (userWish == 0) {
-                    break;
-                }
-                break;
+                userWon = true;
+            }
+
+            if (userTry == userTryCount) {
+                System.out.println("Ваши попытки закончились!");
+                inGame = playAgainGame();
+                userTry = 0;
+            } else if (userWon) {
+                inGame = playAgainGame();
+              userTry = 0;
             }
             userTry++;
-            if (userTry > userTryCount) {
-                System.out.println("Ваши попытки закончились!");
-                System.out.println("Повторить игру еще раз? 1 – да / 0 – нет: ");
-                Scanner scannerAnswer = new Scanner(System.in);
-                int userWish = scannerAnswer.nextInt();
-                if (userWish == 1) {
-                    theGameGuessNumber(3);
-                } else if (userWish == 0) {
-                    break;
-                }
-            }
         }
     }
+
+    private static boolean playAgainGame() {
+        Scanner scannerAnswer = new Scanner(System.in);
+        int answer;
+
+        do {
+            System.out.println("Повторить игру еще раз? 1 – да / 0 – нет: ");
+            answer = scannerAnswer.nextInt();
+        } while (answer < 0 || answer > 1);
+
+        return answer == 1;
+    }
 }
+
