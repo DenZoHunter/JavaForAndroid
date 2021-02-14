@@ -1,6 +1,6 @@
 package ru.geekbrains.lesson1;
 
-public class Main {
+public class Lesson1 {
     public static void main(String[] args) {
 
 // 2. Создать переменные всех пройденных типов данных и инициализировать их значения.
