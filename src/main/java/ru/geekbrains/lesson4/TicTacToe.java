@@ -78,7 +78,6 @@ public class TicTacToe {
         }
     }
 
-
     private static void playGame() {
 
         turnsCount = 0;
@@ -224,10 +223,51 @@ public class TicTacToe {
         int rowNumber;
         int columnNumber;
 
+//      для блокировки игрока
+        int countRowFull;
+        int countColumnFull;
+        int emptyRowCount;
+        int emptyColumnCount;
+
         System.out.println("\nХод компьютера!");
 
+        //      заблокировать ход человека по горизонтали
 
-
+        for (int i = 0; i < SIZE; i++) {
+            countRowFull = 0;
+            countColumnFull = 0;
+            emptyRowCount = 0;
+            emptyColumnCount = 0;
+            for (int j = 0; j < SIZE; j++) {
+                if (MAP[i][j] == DOT_HUMAN) {
+                    countRowFull++;
+                } else if (MAP[i][j] == DOT_EMPTY) {
+                    emptyRowCount++;
+                }
+                if ((countRowFull == SIZE_FOR_WIN - 1) && (emptyRowCount == 1)) {
+                    for (int k = 0; k < SIZE; k++) {
+                        if (MAP[i][k] == DOT_EMPTY) {
+                            MAP[i][k] = DOT_AI;
+                            return;
+                        }
+                    }
+                }
+                //      заблокировать ход человека по вертикали
+                if (MAP[j][i] == DOT_HUMAN) {
+                    countColumnFull++;
+                } else if (MAP[j][i] == DOT_EMPTY) {
+                    emptyColumnCount++;
+                }
+                if ((countColumnFull == SIZE_FOR_WIN - 1) && (emptyColumnCount == 1)) {
+                    for (int k = 0; k < SIZE; k++) {
+                        if (MAP[k][i] == DOT_EMPTY) {
+                            MAP[k][i] = DOT_AI;
+                            return;
+                        }
+                    }
+                }
+            }
+        }
 
         do {
             rowNumber = random.nextInt(SIZE);
