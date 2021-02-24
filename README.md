@@ -1,2 +1,2 @@
-# My homework on geekbrains.
+# My homework on geekbrains.ru.
 JavaForAndroid 
