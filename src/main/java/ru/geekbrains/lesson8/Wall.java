@@ -12,8 +12,11 @@ public class Wall implements Hurdles {
     }
 
     @Override
-    public void doIt(Obstacles o){
-        o.jump(this);
+    public boolean doIt(Obstacles o) {
+        if (o.jump(this)) {
+            return true;
+        }
+        return false;
     }
 
 }

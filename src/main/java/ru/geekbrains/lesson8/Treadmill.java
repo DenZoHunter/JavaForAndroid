@@ -14,7 +14,10 @@ public class Treadmill implements Hurdles {
 
 
     @Override
-    public void doIt(Obstacles o) {
-        o.run(this);
+    public boolean doIt(Obstacles o) {
+        if (o.run(this)) {
+            return true;
+        }
+        return false;
     }
 }
