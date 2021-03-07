@@ -5,14 +5,12 @@ public class Human implements Obstacles {
     protected int age;
     private int maxRun;
     private int maxJump;
-    boolean active;
 
     public Human(String name, int age, int maxRun, int maxJump) {
         this.name = name;
         this.age = age;
         this.maxRun = maxRun;
         this.maxJump = maxJump;
-        boolean active = true;
     }
 
     public int getMaxRun() {
@@ -23,24 +21,25 @@ public class Human implements Obstacles {
         return maxJump;
     }
 
-
     @Override
-    public void jump(Wall wall) {
+    public boolean jump(Wall wall) {
         if (wall.getHeight() <= this.getMaxJump()) {
             System.out.println(name + " перепрыгнул через стену.");
+            return true;
         } else {
-            active = false;
             System.out.println(name + " не смог перепрыгнуть через стену.");
         }
+        return false;
     }
 
     @Override
-    public void run(Treadmill treadmill) {
+    public boolean run(Treadmill treadmill) {
         if (treadmill.getLength() <= this.getMaxRun()) {
             System.out.println(name + " пробежал по беговой дорожке");
+            return true;
         } else {
-            active = false;
             System.out.println(name + " не смог пробежать по беговой дорожке");
         }
+        return false;
     }
 }

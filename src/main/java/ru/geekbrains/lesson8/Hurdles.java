@@ -1,5 +1,5 @@
 package ru.geekbrains.lesson8;
 
-public abstract class Hurdles {
-
+public interface Hurdles {
+    void doIt(Obstacles o);
 }

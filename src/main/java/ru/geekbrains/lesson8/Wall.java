@@ -1,6 +1,6 @@
 package ru.geekbrains.lesson8;
 
-public class Wall extends Hurdles {
+public class Wall implements Hurdles {
     protected int height;
 
     public Wall(int height) {
@@ -9,6 +9,11 @@ public class Wall extends Hurdles {
 
     public int getHeight() {
         return height;
+    }
+
+    @Override
+    public void doIt(Obstacles o){
+        o.jump(this);
     }
 
 }

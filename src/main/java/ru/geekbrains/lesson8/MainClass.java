@@ -27,6 +27,15 @@ public class MainClass {
         Hurdles runWay[] = {wall1, wall2, wall3, treadmill1, treadmill2, treadmill3};
 
 
+        for (Obstacles o: team) {
+            for (Hurdles h: runWay) {
+                if (h.doIt(o)) {
+                    continue;
+                } else break;
+            }
+        }
+
+
 
     }
 }
