@@ -16,4 +16,5 @@ public class Task2 {
         System.out.println(phoneBook.get("Zaharov"));
         System.out.println(phoneBook.get("Krupnov"));
     }
+
 }
