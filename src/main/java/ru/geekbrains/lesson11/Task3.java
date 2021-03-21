@@ -17,4 +17,43 @@ package ru.geekbrains.lesson11;
 * */
 
 public class Task3 {
+
+    public static void main(String[] args) {
+
+        Apple apple = new Apple(1.0f);
+        Orange orange = new Orange(1.5f);
+
+        Box<Apple> appleBox = new Box<>();
+
+        Box<Orange> orangeBox = new Box<>();
+        Box<Orange> orangeBoxTwo = new Box<>();
+
+        appleBox.add(apple);
+        appleBox.add(apple);
+
+        orangeBox.add(orange);
+        orangeBox.add(orange);
+        orangeBox.add(orange);
+        orangeBox.add(orange);
+
+
+        orangeBoxTwo.add(orange);
+        orangeBoxTwo.add(orange);
+        orangeBoxTwo.add(orange);
+
+        System.out.println("Вес коробки с яблоками: " + appleBox.getWeight());
+        System.out.println("Вес первой коробки с апельсинами: " + orangeBox.getWeight());
+        System.out.println("Вес второй коробки с апельсинами: " + orangeBoxTwo.getWeight());
+
+        System.out.println("Сравним вес первой и второй коробки с апельсинами: " + orangeBox.compare(orangeBoxTwo));
+
+        System.out.println("Пересыпаем апельсины с первой коробки во вторую");
+        orangeBox.moveAt(orangeBoxTwo);
+
+        System.out.println("Вес первой коробки с апельсинами: " + orangeBox.getWeight());
+        System.out.println("Вес второй коробки с апельсинами: " + orangeBoxTwo.getWeight());
+
+    }
+
+
 }
